@@ -1,6 +1,6 @@
 #include "cubestate.h"
-#include <array>
-#include <iostream>
+
+
 
 std::array<std::array<std::array<cubelet, 5>, 5>, 5> cubestate::state_init()
 {
@@ -47,6 +47,78 @@ std::array<std::array<std::array<cubelet, 5>, 5>, 5> cubestate::state_init()
 return Cs;
 }
 
+int cubestate::xpos(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate, cubelet targ_piece)
+{
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 5; j++)
+        {
+            for (int k = 0; k < 5; k++)
+            {
+                if(Cstate[i][j][k] == targ_piece)
+                {
+                    return k;
+                }
+            }
+        }
+    }
+    return ERROR;
+}
+
+int cubestate::ypos(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate, cubelet targ_piece)
+{
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 5; j++)
+        {
+            for (int k = 0; k < 5; k++)
+            {
+                if(Cstate[i][j][k] == targ_piece)
+                {
+                    return j;
+                }
+            }
+        }
+    }
+    return ERROR;
+}
+
+int cubestate::zpos(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate, cubelet targ_piece)
+{
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 5; j++)
+        {
+            for (int k = 0; k < 5; k++)
+            {
+                if(Cstate[i][j][k] == targ_piece)
+                {
+                    return i;
+                }
+            }
+        }
+    }
+    return ERROR;
+}
+
+std::array<std::array<std::array<cubelet, 5>, 5>, 5> cubestate::R(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate)
+{
+    std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cs;
+
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 5; j++)
+        {
+            for(int k = 0; k < 5; k++)
+            {
+                Cs[k][j][i] = Cstate[k][j][i];
+            }
+        }
+    }
+    return Cs;
+    
+}
+
 void cubestate::call_state(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate)
 {
     for(int i = 0; i < 5; i++)
@@ -55,9 +127,9 @@ void cubestate::call_state(std::array<std::array<std::array<cubelet, 5>, 5>, 5> 
         {
             for(int k = 0; k < 5; k++)
             {
-                switch(Cstate[k][j][i]) {
+                switch(Cstate[i][j][k]) {
                     case N:
-                    std::cout << "   " << ", ";
+                    std::cout << "N  " << ", ";
                     break;
                     
                     case bc:
