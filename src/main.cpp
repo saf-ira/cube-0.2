@@ -1,25 +1,11 @@
-#include "cubestate.hpp"
-#include "solver.hpp"
+#include "cubestate.h"
+#include "solver.h"
 cubestate cube;
 solver solve;
 
 int main()
 {
-    
-    int state[48];
-    cube.start(state);
-
-    cube.scramble(state);
-
-    cube.callstate(state);
-
-    int pos;
-    pos = solve.getPos(state, 3);
-
-    std::cout << '\n' << pos;
-    pos = solve.getPos(state, 4);
-
-    std::cout << ", " << pos;
-
-
+    std::array<std::array<std::array<cubelet, 5>, 5>, 5> state;
+    state = cube.state_init();
+    cube.call_state(state);
 }
