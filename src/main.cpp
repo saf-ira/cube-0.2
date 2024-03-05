@@ -10,9 +10,9 @@ int main()
     state = cube.state_init();
     cube.call_state(state);
 
-    int xpos = cube.xpos(state, b7);
-    int ypos = cube.ypos(state, b7);
-    int zpos = cube.zpos(state, b7);
+    state = cube.R(state);
 
-    std::cout << xpos << ", " << ypos << ", " << zpos << ", ";
+    std::cout << '\n' << '\n';
+    
+    
 }

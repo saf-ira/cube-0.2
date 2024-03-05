@@ -105,19 +105,39 @@ std::array<std::array<std::array<cubelet, 5>, 5>, 5> cubestate::R(std::array<std
 {
     std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cs;
 
+    Cs = copy_state(Cstate);
+
+    Cs[3][1][0] = Cstate[3][0][3];
+    Cs[3][0][3] = Cstate[3][3][4];
+    Cs[3][3][4] = Cstate[3][4][1];
+
+    Cs[3][0][1] = Cstate[3][1][4];
+    Cs[3][1][4] = Cstate[3][4][3];
+    Cs[3][4][3] = Cstate[3][1][0];
+
+    Cs[4][1][1] = Cstate[4][1][3];
+    Cs[4][1][3] = Cstate[4][3][3];
+    Cs[4][3][3] = Cstate[4][3][1];
+    return Cs;
+}
+
+std::array<std::array<std::array<cubelet, 5>, 5>, 5> cubestate::copy_state(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate)
+{
+    std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cs;
+
     for(int i = 0; i < 5; i++)
     {
         for(int j = 0; j < 5; j++)
         {
             for(int k = 0; k < 5; k++)
             {
-                Cs[k][j][i] = Cstate[k][j][i];
+                Cs[i][j][k] = Cstate[i][j][k];
             }
         }
     }
     return Cs;
-    
 }
+
 
 void cubestate::call_state(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate)
 {
@@ -325,7 +345,7 @@ void cubestate::call_state(std::array<std::array<std::array<cubelet, 5>, 5>, 5> 
                     break;
 
                     case g18:
-                    std::cout << "" << ", ";
+                    std::cout << "g18" << ", ";
                     break;
                     
                     case y19:

@@ -1,5 +1,7 @@
 #include <array>
 #include <iostream>
+#include <cstring>
+
 
 #ifndef CUBESTATE_H_
 #define CUBESTATE_H_
@@ -73,6 +75,7 @@ class cubestate {
     int xpos(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate, cubelet targ_piece);
     int ypos(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate, cubelet targ_piece);
     int zpos(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate, cubelet targ_piece);
+    std::array<std::array<std::array<cubelet, 5>, 5>, 5> copy_state(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate);
     void call_state(std::array<std::array<std::array<cubelet, 5>, 5>, 5> Cstate);
 };
 
