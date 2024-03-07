@@ -1,2 +1,2 @@
-#include "cubestate.h"
+#include "cubestate.hpp"
 #include "solver.h"

@@ -1,4 +1,4 @@
-#include "cubestate.h"
+#include "cubestate.hpp"
 #include "solver.h"
 
 cubestate cube;
@@ -10,9 +10,9 @@ int main()
     state = cube.state_init();
     cube.call_state(state);
 
-    state = cube.R(state);
-
     std::cout << '\n' << '\n';
-    
-    
+
+    state = cube.B(state);
+
+    cube.call_state(state);
 }
